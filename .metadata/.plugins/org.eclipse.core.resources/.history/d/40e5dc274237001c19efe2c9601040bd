@@ -1,0 +1,18 @@
+import java.awt.Color;
+
+public class GrafikBeispiel extends StandardAnwendung{
+	public static void main(String[] args) {
+		starteAnwendung();
+	}
+	
+	double interval = 0.04;
+	double k = 0.3;
+	double m = 1000;
+	
+	RocketLaunch calc = new RocketLaunch(interval, k, m);
+	
+	public RocketLaunch() {
+		super("Fenstertitel", 500, 600);
+		this.setBackground(Color.YELLOW);
+	}
+}
