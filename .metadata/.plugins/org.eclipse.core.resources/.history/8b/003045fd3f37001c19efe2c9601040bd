@@ -1,0 +1,11 @@
+
+public class GrafikBeispiel extends StandardAnwendung{
+	public static void main(String[] args) {
+		starteAnwendung();
+	}
+	
+	public GrafikBeispiel() {
+		super("Grafik Beipiel", 500, 600);
+		this.setBackground(Color.YELLOW);
+	}
+}

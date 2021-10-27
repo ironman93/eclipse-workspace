@@ -1,0 +1,30 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+
+import javax.swing.Timer;
+
+
+public class Kugelfall extends StandardAnwendung implements ActionListener{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		starteAnwendung();
+	}
+
+	public Kugelfall() {
+		super("titel", 500, 500);
+		Timer frame = new Timer(40, this);
+		frame.start();
+	}
+	
+	@Override
+	public void zeichne() {
+		g.setColor(Color.GREEN);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		this.repaint();
+	}
+}

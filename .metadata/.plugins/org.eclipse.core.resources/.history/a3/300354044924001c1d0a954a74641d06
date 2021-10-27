@@ -1,0 +1,19 @@
+
+public class FreeFall {
+	
+	double t;
+	double a;
+	double v;
+	double interval;
+	double k;
+	double g;
+	double m;
+	double x;
+	
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}
