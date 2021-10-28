@@ -1,5 +1,5 @@
 
-public class RocketLaunch {
+public class FreeFall {
 	
 	double t;
 	double a;
@@ -10,7 +10,7 @@ public class RocketLaunch {
 	double m;
 	double x;
 	
-	public RocketLaunch(double interval, double k, double m) {
+	public FreeFall(double interval, double k, double m) {
 		t = 0;
 		g = 9.81;
 		a = g;
@@ -60,8 +60,8 @@ public class RocketLaunch {
 	
 	
 	public static void main(String[] args) {
-		RocketLaunch launch = new RocketLaunch(1, 0.3, 100);
-		launch.calcFreeFall(10);
+		FreeFall freefall = new FreeFall(1, 0.3, 100);
+		freefall.calcFreeFall(10);
 
 	}
 
