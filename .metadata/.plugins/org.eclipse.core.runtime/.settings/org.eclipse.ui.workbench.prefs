@@ -1,14 +1,7 @@
+=\=\=\=\=\=\=
 //org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
-<<<<<<< HEAD
-PLUGINS_NOT_ACTIVATED_ON_STARTUP=;org.eclipse.m2e.discovery;
-eclipse.preferences.version=1
-org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_END=255,255,255
-org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_START=255,255,255
-org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_TEXT_COLOR=16,16,16
-org.eclipse.ui.workbench.ACTIVE_TAB_BG_END=255,255,255
-org.eclipse.ui.workbench.ACTIVE_TAB_BG_START=255,255,255
-org.eclipse.ui.workbench.INACTIVE_TAB_BG_START=242,242,242
-=======
+<<<<<<<=HEAD
+>>>>>>>=ccd1abe0ba2844a7b2dee56bf84eac8013445634
 ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc
 ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.jface.textfont
 PLUGINS_NOT_ACTIVATED_ON_STARTUP=;org.eclipse.m2e.discovery;
@@ -37,4 +30,3 @@ org.eclipse.ui.workbench.INACTIVE_TAB_BG_START=59,64,66
 org.eclipse.ui.workbench.INACTIVE_TAB_TEXT_COLOR=187,187,187
 org.eclipse.wst.sse.ui.textfont=1|Consolas|12.184615|0|WINDOWS|1|-22|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 terminal.views.view.font.definition=1|Consolas|12.184615|0|WINDOWS|1|-22|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
->>>>>>> ccd1abe0ba2844a7b2dee56bf84eac8013445634
