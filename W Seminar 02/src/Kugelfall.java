@@ -26,12 +26,15 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	Color bg = new Color(100,100,100);
 	Color ball = new Color(0,220,255);
 	Timer timer = new Timer((int)(dt*1000), this);
+	JLabel velocity = new JLabel(""+v);
 	
 	public Kugelfall() {
 		super("titel", 250, 500);
 		this.setBackground(bg);
 		JButton startButton = new JButton("start");
+		
 		add(startButton);
+		
 		startButton.setVisible(true);
 		startButton.addActionListener(this);
 	}
@@ -56,7 +59,11 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 			x = 10;
 		}
 		this.repaint();
-		System.out.println(v);
+	}
+	
+	public void updateTelemetry() {
+		velocity.setText(""+v);
+		
 	}
 	
 	@Override
@@ -71,5 +78,7 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		timer.start();
 		fall();
+		add(velocity);
+		velocity.setVisible(true);
 	}
 }
