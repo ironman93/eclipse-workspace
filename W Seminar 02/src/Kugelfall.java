@@ -1,10 +1,10 @@
 import java.awt.event.ActionEvent;
 import java.awt.Container;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.swing.*;
-
 import javax.swing.Timer;
 
 
@@ -28,18 +28,23 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	Color ball = new Color(0,220,255);
 	Timer timer = new Timer((int)(dt*1000), this);
 	JLabel velocityLabel = new JLabel(""+v);
+	JLabel distanceLabel = new JLabel(""+x);
 	Container panel = new Container();
 	GroupLayout telemetryLayout = new GroupLayout(panel);
-	panel.setLayout(telemetryLayout);
+	
+	
 	
 	public Kugelfall() {
 		super("titel", 250, 500);
 		this.setBackground(bg);
 		JButton startButton = new JButton("start");
 		add(startButton);
-		startButton.setLocation(150,20);
 		startButton.setVisible(true);
 		startButton.addActionListener(this);
+		panel.setLayout(telemetryLayout);
+		telemetryLayout.setAutoCreateGaps(true);
+		telemetryLayout.setAutoCreateContainerGaps(true);
+		
 	}
 	
 	public void calcAccelaration() {
@@ -62,11 +67,12 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 			x = 10;
 		}
 		this.repaint();
+		updateTelemetry();
 	}
 	
 	public void updateTelemetry() {
-		velocityLabel.setText(""+v);
-		
+		velocityLabel.setText("velocity: "+Math.round(v));
+		distanceLabel.setText("distance: "+Math.round(x));
 		
 	}
 	
@@ -74,7 +80,6 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	public void zeichne(Graphics2D g) {
 		g.setColor(ball);
 		g.fillOval(50, (int)x, 20, 20);
-		
 	}
 	
 	
@@ -82,13 +87,20 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		timer.start();
 		fall();
-		telemetryLayout.setVerticalGroup(
+		/*telemetryLayout.setVerticalGroup(
 				telemetryLayout.createSequentialGroup()
-				.addGroup(
-						telemetryLayout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(velocityLabel)
-				)
+				.addComponent(velocityLabel)
+				.addComponent(distanceLabel)	    		  
+		);*/
+		telemetryLayout.setHorizontalGroup(telemetryLayout.createSequentialGroup()
+				.addGroup(telemetryLayout.createParallelGroup()
+			        .addComponent(velocityLabel)
+			        .addComponent(distanceLabel)
+			        )
 		);
 		add(velocityLabel);
+		add(distanceLabel);
 		velocityLabel.setVisible(true);
+		distanceLabel.setVisible(true);
 	}
 }
