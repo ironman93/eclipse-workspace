@@ -14,8 +14,15 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 		// TODO Auto-generated method stub
 		starteAnwendung();
 	}
+	
 
-	int fallpos = 25;
+	JLabel velocityLabel = new JLabel("velocity: 0");
+	JLabel distanceLabel = new JLabel("distance: 0");
+	JLabel accelerationLabel = new JLabel("acceleration: 9.81");
+	
+
+	JButton startButton = new JButton("Start");
+
 	double t = 0;
 	double v = 0;
 	double dt = 0.017;
@@ -24,28 +31,50 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	double a = g;
 	double m = 100;
 	double x = 25;
+
+	
 	Color bg = new Color(100,100,100);
 	Color ball = new Color(0,220,255);
-	Timer timer = new Timer((int)(dt*1000), this);
-	JLabel velocityLabel = new JLabel(""+v);
-	JLabel distanceLabel = new JLabel(""+x);
-	Container panel = new Container();
-	GroupLayout telemetryLayout = new GroupLayout(panel);
-	
+	Timer timer = new Timer((int)(dt*1000), this);	
 	
 	
 	public Kugelfall() {
-		super("titel", 250, 500);
+		super("titel", 350, 500);
 		this.setBackground(bg);
-		JButton startButton = new JButton("start");
+
+		startButton.addActionListener(this);
 		add(startButton);
 		startButton.setVisible(true);
-		startButton.addActionListener(this);
-		panel.setLayout(telemetryLayout);
+		
+		velocityLabel.setVisible(true);
+		distanceLabel.setVisible(true);
+		accelerationLabel.setVisible(true);
+		GroupLayout telemetryLayout = new GroupLayout(fenster.getContentPane());
 		telemetryLayout.setAutoCreateGaps(true);
 		telemetryLayout.setAutoCreateContainerGaps(true);
-		
+		fenster.getContentPane().setLayout(telemetryLayout);
+		telemetryLayout.setVerticalGroup(
+				telemetryLayout.createSequentialGroup()
+				.addComponent(startButton)
+				.addComponent(velocityLabel)
+				.addComponent(distanceLabel)
+				.addComponent(accelerationLabel)
+		);
+		telemetryLayout.setHorizontalGroup(
+				telemetryLayout.createParallelGroup(
+						GroupLayout.Alignment.LEADING
+				)
+				.addComponent(startButton)
+				.addComponent(accelerationLabel)
+				.addComponent(velocityLabel)
+				.addComponent(distanceLabel)
+		);	
 	}
+	
+	
+	
+	
+	
 	
 	public void calcAccelaration() {
 		a = g-(k/m)*v*v;
@@ -73,34 +102,23 @@ public class Kugelfall extends StandardAnwendung implements ActionListener{
 	public void updateTelemetry() {
 		velocityLabel.setText("velocity: "+Math.round(v));
 		distanceLabel.setText("distance: "+Math.round(x));
+		accelerationLabel.setText("acceleration: " +Math.round(a));
 		
 	}
 	
 	@Override
 	public void zeichne(Graphics2D g) {
 		g.setColor(ball);
-		g.fillOval(50, (int)x, 20, 20);
+		g.fillOval(200, (int)x, 20, 20);
 	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		timer.start();
-		fall();
-		/*telemetryLayout.setVerticalGroup(
-				telemetryLayout.createSequentialGroup()
-				.addComponent(velocityLabel)
-				.addComponent(distanceLabel)	    		  
-		);*/
-		telemetryLayout.setHorizontalGroup(telemetryLayout.createSequentialGroup()
-				.addGroup(telemetryLayout.createParallelGroup()
-			        .addComponent(velocityLabel)
-			        .addComponent(distanceLabel)
-			        )
-		);
 		add(velocityLabel);
 		add(distanceLabel);
-		velocityLabel.setVisible(true);
-		distanceLabel.setVisible(true);
+		add(accelerationLabel);
+		fall();
 	}
 }
